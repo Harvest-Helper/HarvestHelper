@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "HarvestHelper - An easier way to track time with Harvest",
+  "description": "Your personal time tracking assistant for Harvest",
+  "version": "3.0",
+  "permissions": [
+    "storage",
+    "scripting",
+    "contextMenus",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_security_policy": {}
+}

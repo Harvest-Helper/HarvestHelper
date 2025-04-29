@@ -1,0 +1,79 @@
+Changelog
+
+V3.0 Updates (Major Release)
+- New Options Page
+    - Added Custom Sites Management (Beta)
+        - Add and remove custom time tracking sites
+        - Support for subdomain wildcards
+        - Pattern preview for URL matching
+        - Example site template
+    - Default Sites Management
+        - Toggle sites on/off individually
+        - Visual status indicators
+        - Automatic content script handling
+    - Support Section
+        - Quick access to help resources
+        - Direct links to QuackForce support
+- Enhanced Site Pattern Matching
+    - Support for wildcard domains (*.example.com)
+    - Support for path wildcards (example.com/*)
+    - Improved pattern validation and preview
+- Extension Architecture Improvements
+    - New background service worker
+    - Improved content script injection
+    - Better state management with Chrome Storage
+    - Enhanced error handling
+- UI/UX Improvements
+    - Modern tab-based interface
+    - Responsive design
+    - Improved button interactions
+    - Better visual feedback
+
+V2.1 Updates
+- New look
+    - Now simply the Harvest logo and square icon
+- Upgraded drag function
+    - Allows drag to left and right hand side of the page
+    - Will now snap to closest position if you release on the page
+        - Will not save to bottom right of page and will snap to right above the harvest popup
+- Borders
+    - When dragging a border will appear so you know you are in drag mode
+- Persistent Position
+    - Will save the extensions position once you move it on other pages
+        - Will save the same on all pages it works on
+- Button/Extension Responsiveness
+    - Drag will no longer open the popup for harvest
+    - Clicking will open the popup
+- Added new site
+    - Risotto has been added for tracking time on tickets
+
+V2.0 Updates
+- Full revamp of the button
+	- Hover ability: Will allow the button to be dragged vertically (1-36% of the screen)
+	- Name is in line with how Harvest shows there name, lowercase
+	- Colors are exact now, logo and button are the same color
+	- Removed a redundant button and code that would add a small harvest logo in corner of screen
+
+V1.6 Updates
+- Added mew URL: https://app.hubspot.com/*
+- Updated documentation
+	- Working URLS: added Hubspot
+	
+V1.5 Updates
+- Added new URL: https://*.atlassian.net/*
+
+V1.4 Updates
+- Added new URL: https://*.agiloft.com/*
+
+V1.3 Updates
+- Adjusted URL: https://on.spiceworks.com/*
+	- New URL: https://*.spiceworks.com/*
+	- Allows for additional subdomains
+- Updated documentation:
+	- Working URLS: changed Spiceworks to - https://*.spiceworks.com/*
+
+V1.2 Updates
+- Added new URL: https://*.freshservice.com/*
+- Updated documentation:
+	- Privacy Policy (No material changes, location and naming)
+	- Working URLS (New document with actively working urls)
