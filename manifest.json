@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "HarvestHelper - An easier way to track time with Harvest",
+  "name": "Harvest Helper - An easier way to track time with Harvest",
   "description": "Your personal time tracking assistant for Harvest",
   "version": "3.0",
   "permissions": [

@@ -1,6 +1,6 @@
 // Guard against multiple script injections
 if (window.harvestHelperInitialized) {
-  console.log('HarvestHelper already initialized on this page');
+  console.log('Harvest Helper already initialized on this page');
 } else {
   window.harvestHelperInitialized = true;
   
@@ -312,7 +312,7 @@ if (window.harvestHelperInitialized) {
               // Add title with link
               const title = document.createElement('a');
               title.className = 'harvest-iframe-title';
-              title.textContent = 'HarvestHelper™';
+              title.textContent = 'Harvest Helper';
               title.href = '#';
               title.title = 'Open Extension Options';
               title.style.textDecoration = 'none';
@@ -665,7 +665,7 @@ if (window.harvestHelperInitialized) {
   };
   
   // Function to remove HarvestHelper elements from the page
-  function removeHarvestHelper() {
+  function removeHarvestHelperElements() {
     console.log('Removing HarvestHelper from page');
     
     // Remove iframe if present
@@ -696,15 +696,11 @@ if (window.harvestHelperInitialized) {
   if (typeof chrome !== 'undefined' && chrome.runtime) {
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.action === 'removeHarvestHelper') {
-        removeHarvestHelper();
+        removeHarvestHelperElements();
         sendResponse({ success: true });
+      } else if (message.action === 'isHarvestHelperActive') {
+        sendResponse({ active: window.harvestHelperInitialized });
       }
-      
-      if (message.action === 'isHarvestHelperActive') {
-        // Respond with active status to let background script know HarvestHelper is running
-        sendResponse({ active: true });
-      }
-      
       return true; // Keep message channel open for async response
     });
   }

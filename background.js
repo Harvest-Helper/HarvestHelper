@@ -98,7 +98,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   chrome.contextMenus.removeAll(() => {
     chrome.contextMenus.create({
       id: 'open_options',
-      title: 'HarvestHelper Options',
+      title: 'Harvest Helper Options',
       contexts: ['action']
     });
   });
@@ -140,7 +140,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       });
       
       chrome.storage.sync.set({ defaultSites: updatedSites }, () => {
-        // If site was disabled, send message to all tabs matching the pattern to remove HarvestHelper
+        // If site was disabled, send message to all tabs matching the pattern to remove Harvest Helper
         if (!message.enabled) {
           removeHarvestHelperFromMatchingTabs(message.pattern);
         } else {
@@ -167,13 +167,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-// Function to remove HarvestHelper from tabs matching a pattern
+// Function to remove Harvest Helper from tabs matching a pattern
 function removeHarvestHelperFromMatchingTabs(pattern) {
   // Query all tabs
   chrome.tabs.query({}, (tabs) => {
     tabs.forEach(tab => {
       if (tab.url && matchesPattern(tab.url, pattern)) {
-        console.log(`Removing HarvestHelper from tab: ${tab.url}`);
+        console.log(`Removing Harvest Helper from tab: ${tab.url}`);
         // Send a message to the content script to remove itself
         chrome.tabs.sendMessage(tab.id, { action: 'removeHarvestHelper' })
           .catch(error => {
@@ -185,18 +185,18 @@ function removeHarvestHelperFromMatchingTabs(pattern) {
   });
 }
 
-// Function to inject HarvestHelper into tabs matching a pattern
+// Function to inject Harvest Helper into tabs matching a pattern
 function injectHarvestHelperIntoMatchingTabs(pattern) {
   // Query all tabs
   chrome.tabs.query({}, (tabs) => {
     tabs.forEach(tab => {
       if (tab.url && matchesPattern(tab.url, pattern)) {
-        console.log(`Injecting HarvestHelper into tab: ${tab.url}`);
+        console.log(`Injecting Harvest Helper into tab: ${tab.url}`);
         // Check if content script is already running by sending a test message
         chrome.tabs.sendMessage(tab.id, { action: 'isHarvestHelperActive' })
           .then(response => {
             if (response && response.active) {
-              console.log(`HarvestHelper already active in tab ${tab.id}`);
+              console.log(`Harvest Helper already active in tab ${tab.id}`);
             } else {
               // Inject the content script if it's not already running
               injectContentScript(tab.id);
@@ -223,7 +223,7 @@ function injectContentScript(tabId) {
   });
 }
 
-// Main function to check if a site should have HarvestHelper on it
+// Main function to check if a site should have Harvest Helper on it
 async function shouldInjectHarvestHelper(url) {
   try {
     // Get both custom sites and enabled default sites from storage
@@ -237,7 +237,7 @@ async function shouldInjectHarvestHelper(url) {
     // Check if URL matches any site pattern
     return allSites.some(site => matchesPattern(url, site.pattern));
   } catch (error) {
-    console.error('Error checking if HarvestHelper should be injected:', error);
+    console.error('Error checking if Harvest Helper should be injected:', error);
     return false;
   }
 }
@@ -256,13 +256,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     shouldInjectHarvestHelper(tab.url)
       .then(shouldInject => {
         if (shouldInject) {
-          console.log(`Should inject HarvestHelper into ${tab.url}`);
+          console.log(`Should inject Harvest Helper into ${tab.url}`);
           
           // Check if already running
           chrome.tabs.sendMessage(tabId, { action: 'isHarvestHelperActive' })
             .then(response => {
               if (response && response.active) {
-                console.log(`HarvestHelper already active in tab ${tabId}`);
+                console.log(`Harvest Helper already active in tab ${tabId}`);
               } else {
                 injectContentScript(tabId);
               }
@@ -272,7 +272,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               injectContentScript(tabId);
             });
         } else {
-          console.log(`Should NOT inject HarvestHelper into ${tab.url}`);
+          console.log(`Should NOT inject Harvest Helper into ${tab.url}`);
         }
       })
       .catch(error => {

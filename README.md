@@ -1,10 +1,10 @@
-# HarvestHelper
+# Harvest Helper
 
-HarvestHelper is your personal time tracking assistant for Harvest, designed to make time tracking effortless and more efficient. This browser extension streamlines your daily time management workflow by providing quick access to Harvest's time tracking features right from your browser, eliminating the need to constantly switch between tabs or applications.
+Harvest Helper is your personal time tracking assistant for Harvest, designed to make time tracking effortless and more efficient. This browser extension streamlines your daily time management workflow by providing quick access to Harvest's time tracking features right from your browser, eliminating the need to constantly switch between tabs or applications.
 
-Whether you're a freelancer, project manager, or part of a team using Harvest, HarvestHelper simplifies the process of logging time, managing projects, and maintaining accurate time records. With features like quick entry, smart suggestions, and customizable shortcuts, you can focus more on your work and less on time management.
+Whether you're a freelancer, project manager, or part of a team using Harvest, Harvest Helper simplifies the process of logging time, managing projects, and maintaining accurate time records. With features like quick entry, smart suggestions, and customizable shortcuts, you can focus more on your work and less on time management.
 
-![HarvestHelper Icon](icon.png)
+![Harvest Helper Icon](icon.png)
 
 ## Features
 
@@ -38,7 +38,7 @@ Whether you're a freelancer, project manager, or part of a team using Harvest, H
 
 ## Usage
 
-1. Click the HarvestHelper icon in your browser toolbar
+1. Click the Harvest Helper icon in your browser toolbar
 2. Use the popup interface to manage your content
 3. Access settings through the options page
 4. Customize your experience through the available preferences
@@ -79,7 +79,7 @@ This project is licensed under the MIT License - see below for details:
 ```
 MIT License
 
-Copyright (c) 2024 HarvestHelper
+Copyright (c) 2024 Harvest Helper
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
