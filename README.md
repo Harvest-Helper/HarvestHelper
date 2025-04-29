@@ -1,16 +1,21 @@
 # HarvestHelper
 
-A browser extension that helps users harvest and manage web content efficiently. This extension streamlines your workflow by providing quick access to content management features right in your browser.
+HarvestHelper is your personal time tracking assistant for Harvest, designed to make time tracking effortless and more efficient. This browser extension streamlines your daily time management workflow by providing quick access to Harvest's time tracking features right from your browser, eliminating the need to constantly switch between tabs or applications.
+
+Whether you're a freelancer, project manager, or part of a team using Harvest, HarvestHelper simplifies the process of logging time, managing projects, and maintaining accurate time records. With features like quick entry, smart suggestions, and customizable shortcuts, you can focus more on your work and less on time management.
 
 ![HarvestHelper Icon](icon_128x128.png)
 
 ## Features
 
-- **Content Management**: Easily save and organize web content
-- **Browser Integration**: Seamless integration with your browser's interface
-- **Customizable Options**: Personalize settings to match your workflow
-- **Background Processing**: Efficient handling of tasks without interrupting your browsing
-- **User-Friendly Interface**: Clean and intuitive design for better user experience
+- **Quick Time Entry**: Log time entries with just a few clicks directly from your browser
+- **Smart Integration**: Seamless integration with Harvest's time tracking system
+- **Project Management**: Easy access to your Harvest projects and tasks
+- **Background Syncing**: Efficient synchronization with Harvest in the background
+- **Customizable Settings**: Personalize shortcuts and preferences to match your workflow
+- **Context Menu Support**: Right-click to quickly start timing for different tasks
+- **Cross-browser Support**: Works on both Chrome and Firefox browsers
+- **Offline Capability**: Queue time entries when offline and sync when connected
 
 ## Installation
 
