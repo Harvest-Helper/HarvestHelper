@@ -4,7 +4,7 @@ HarvestHelper is your personal time tracking assistant for Harvest, designed to 
 
 Whether you're a freelancer, project manager, or part of a team using Harvest, HarvestHelper simplifies the process of logging time, managing projects, and maintaining accurate time records. With features like quick entry, smart suggestions, and customizable shortcuts, you can focus more on your work and less on time management.
 
-![HarvestHelper Icon](icon_128x128.png)
+![HarvestHelper Icon](icon.png)
 
 ## Features
 
