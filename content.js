@@ -53,7 +53,7 @@ if (window.harvestHelperInitialized) {
 
   // Create new image element
   var image = document.createElement('img');
-  image.src = 'https://play-lh.googleusercontent.com/Ghftj62nVINbhMGokNjIYeukYKhfd33c6D1suFbjsAiNH25MIK0KywjYBIaacxShlv0=w240-h480-rw';
+  image.src = chrome.runtime.getURL('icon.png');
   image.style.width = '24px';
   image.style.height = '24px';
   image.style.margin = '0';
@@ -185,102 +185,8 @@ if (window.harvestHelperInitialized) {
           const pageUrl = new URL(window.location.href);
           const uniqueId = getUniquePageId(pageUrl);
           
-          // Create a simple timer interface instead of using Harvest's platform
-          currentIframe.srcdoc = `
-              <!DOCTYPE html>
-              <html>
-              <head>
-                  <style>
-                      body {
-                          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                          margin: 0;
-                          padding: 20px;
-                          background: white;
-                      }
-                      .timer-container {
-                          text-align: center;
-                      }
-                      .timer-display {
-                          font-size: 32px;
-                          margin: 20px 0;
-                          color: #333;
-                      }
-                      .timer-controls button {
-                          padding: 10px 20px;
-                          margin: 0 5px;
-                          border: none;
-                          border-radius: 4px;
-                          background: #fa5d00;
-                          color: white;
-                          cursor: pointer;
-                          font-size: 14px;
-                      }
-                      .timer-controls button:hover {
-                          background: #e55400;
-                      }
-                      .page-info {
-                          margin-top: 20px;
-                          padding: 10px;
-                          background: #f5f5f5;
-                          border-radius: 4px;
-                          font-size: 12px;
-                          color: #666;
-                      }
-                  </style>
-              </head>
-              <body>
-                  <div class="timer-container">
-                      <div class="timer-display">00:00:00</div>
-                      <div class="timer-controls">
-                          <button id="startStop">Start</button>
-                          <button id="reset">Reset</button>
-                      </div>
-                      <div class="page-info">
-                          <p>${pageTitle}</p>
-                          <p>${pageUrl}</p>
-                      </div>
-                  </div>
-                  <script>
-                      let time = 0;
-                      let isRunning = false;
-                      let interval;
-                      
-                      const timerDisplay = document.querySelector('.timer-display');
-                      const startStopBtn = document.getElementById('startStop');
-                      const resetBtn = document.getElementById('reset');
-                      
-                      function formatTime(seconds) {
-                          const h = Math.floor(seconds / 3600);
-                          const m = Math.floor((seconds % 3600) / 60);
-                          const s = seconds % 60;
-                          return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
-                      }
-                      
-                      startStopBtn.addEventListener('click', () => {
-                          if (isRunning) {
-                              clearInterval(interval);
-                              startStopBtn.textContent = 'Start';
-                          } else {
-                              interval = setInterval(() => {
-                                  time++;
-                                  timerDisplay.textContent = formatTime(time);
-                              }, 1000);
-                              startStopBtn.textContent = 'Stop';
-                          }
-                          isRunning = !isRunning;
-                      });
-                      
-                      resetBtn.addEventListener('click', () => {
-                          clearInterval(interval);
-                          time = 0;
-                          timerDisplay.textContent = formatTime(time);
-                          isRunning = false;
-                          startStopBtn.textContent = 'Start';
-                      });
-                  </script>
-              </body>
-              </html>
-          `;
+          // Update the Harvest platform URL with new page information
+          currentIframe.src = `https://platform.harvestapp.com/platform/timer?app_name=Quack Force&permalink=${encodeURIComponent(pageUrl)}&external_item_id=${uniqueId}&external_item_name=${encodeURIComponent(pageTitle)}&closable=false&chromeless=false`;
       }
   }
 
