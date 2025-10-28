@@ -190,6 +190,62 @@ if (window.harvestHelperInitialized) {
       }
   }
 
+  // Helper function to check if iframe can be loaded (CSP check)
+  async function canLoadIframe() {
+      return new Promise((resolve) => {
+          const testIframe = document.createElement('iframe');
+          testIframe.style.display = 'none';
+          testIframe.style.width = '1px';
+          testIframe.style.height = '1px';
+          testIframe.style.position = 'fixed';
+          testIframe.style.left = '-9999px';
+          testIframe.style.top = '-9999px';
+          
+          let resolved = false;
+          const timeout = setTimeout(() => {
+              if (!resolved) {
+                  resolved = true;
+                  testIframe.remove();
+                  resolve(true); // Assume it works if no error
+              }
+          }, 500);
+          
+          testIframe.onerror = () => {
+              if (!resolved) {
+                  resolved = true;
+                  clearTimeout(timeout);
+                  testIframe.remove();
+                  resolve(false);
+              }
+          };
+          
+          testIframe.onload = () => {
+              if (!resolved) {
+                  resolved = true;
+                  clearTimeout(timeout);
+                  // Check if iframe actually loaded content or was blocked
+                  try {
+                      // If we can access iframe.contentDocument, it loaded
+                      if (testIframe.contentDocument || testIframe.contentWindow) {
+                          testIframe.remove();
+                          resolve(true);
+                      } else {
+                          testIframe.remove();
+                          resolve(false);
+                      }
+                  } catch (e) {
+                      // Cross-origin or CSP block
+                      testIframe.remove();
+                      resolve(false);
+                  }
+              }
+          };
+          
+          testIframe.src = 'https://platform.harvestapp.com/platform/timer';
+          document.body.appendChild(testIframe);
+      });
+  }
+
   // Update the iframe creation in your click handler
   button.addEventListener('click', async () => {
       // Only handle click if we're not dragging and it was a short press
@@ -206,6 +262,15 @@ if (window.harvestHelperInitialized) {
               const pageUrl = new URL(window.location.href);
               const uniqueId = getUniquePageId(pageUrl);
               const timerUrl = `https://platform.harvestapp.com/platform/timer?app_name=Quack Force&permalink=${encodeURIComponent(pageUrl)}&external_item_id=${uniqueId}&external_item_name=${encodeURIComponent(pageTitle)}&closable=false&chromeless=false`;
+              
+              // Check if iframe can be loaded
+              const canLoad = await canLoadIframe();
+              
+              if (!canLoad) {
+                  // If iframe can't be loaded (CSP block), open in new window
+                  window.open(timerUrl, 'HarvestTimer', 'width=400,height=600,resizable=yes,scrollbars=yes');
+                  return;
+              }
               
               // Create container
               const container = document.createElement('div');
